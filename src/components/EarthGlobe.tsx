@@ -7,13 +7,12 @@ function Earth() {
   const earthRef = useRef<THREE.Mesh>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
 
-  // Load textures
-  const [earthMap, bumpMap, cloudsMap] = useLoader(THREE.TextureLoader, [
-    'https://planet-texture.s3.amazonaws.com/earth_daymap.jpg',
-    'https://planet-texture.s3.amazonaws.com/earth_bump.jpg',
-    'https://planet-texture.s3.amazonaws.com/earth_clouds.png',
-  ]);
-
+  // Load local textures
+const [earthMap, bumpMap, cloudsMap] = useLoader(THREE.TextureLoader, [
+  '/earth_daymap.jpg',
+  '/earth_bump.jpg',
+  '/earth_clouds.jpg',
+]);
   // Auto-rotation animation
   useFrame(() => {
     if (earthRef.current) {
