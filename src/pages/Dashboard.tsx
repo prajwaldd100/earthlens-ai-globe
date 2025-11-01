@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
-import Globe3D from "@/components/Globe3D";
+import EarthGlobe from "@/components/EarthGlobe";
 import DataCard from "@/components/DataCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Cloud, Droplets, Leaf, Sparkles, Thermometer, Wind } from "lucide-react";
+import { Cloud, Droplets, Leaf, Sparkles, Thermometer } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { toast } from "sonner";
 
@@ -52,11 +52,20 @@ const Dashboard = () => {
       <main className="pt-24 pb-12 px-6">
         <div className="container mx-auto space-y-8">
           {/* Header */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <h1 className="text-4xl font-bold text-glow mb-2">Environmental Dashboard</h1>
-              <p className="text-muted-foreground">Real-time planetary health monitoring</p>
-            </div>
+          <div className="flex flex-col items-center text-center gap-4 mb-8">
+            <h1 className="text-5xl font-bold text-glow">
+              🌍 EarthLens — AI Planet Visualizer
+            </h1>
+            <p className="text-muted-foreground text-lg">Real-time planetary health monitoring</p>
+          </div>
+
+          {/* 3D Earth Globe */}
+          <div className="mb-8">
+            <EarthGlobe />
+          </div>
+
+          {/* Predict Future Button */}
+          <div className="flex justify-center mb-8">
             <Button 
               size="lg" 
               onClick={handlePredictFuture}
@@ -66,6 +75,14 @@ const Dashboard = () => {
               <Sparkles className="h-5 w-5" />
               Predict Earth's Future
             </Button>
+          </div>
+
+          {/* Original Header for Data Cards */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+              <h2 className="text-2xl font-bold">Environmental Metrics</h2>
+              <p className="text-muted-foreground">Key indicators of planetary health</p>
+            </div>
           </div>
 
           {/* Stats Cards */}
@@ -102,18 +119,6 @@ const Dashboard = () => {
 
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-3 gap-6">
-            {/* Globe */}
-            <Card className="lg:col-span-2 glass-card border-border/50 overflow-hidden">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Wind className="h-5 w-5 text-primary" />
-                  Interactive Earth View
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-0">
-                <Globe3D />
-              </CardContent>
-            </Card>
 
             {/* Air Quality Index */}
             <Card className="glass-card border-border/50">
